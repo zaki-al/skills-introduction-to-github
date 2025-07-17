@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun Debby Wulandari ❤</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #001f3f, #003366);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, p {
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ffd700;
+      margin-top: 20px;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      color: #ffffffcc;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin-top: 20px;
+      line-height: 1.6em;
+    }
+
+    img {
+      margin-top: 30px;
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #ffffff80;
+    }
+
+    /* Tombol surat */
+    .secret-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ffd700;
+      color: #001f3f;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .secret-btn:hover {
+      background-color: #e6c200;
+    }
+
+    /* Modal Surat */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      color: #222;
+      margin: 10% auto;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      font-family: 'Georgia', serif;
+      line-height: 1.7em;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: #d62828;
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selamat Ulang Tahun 🎉</h1>
+  <h2>Debby Wulandari (Kesayangan❤)</h2>
+  <p>
+    00:00 tepat. Selamat ulang tahun sayangg, kamu... orang paling aku sayangg. <br>
+    Di hari spesial ini, aku cuma mau bilang: <br>
+    Semoga semua hal baik dateng ke kamu—hari ini dan seterusnya. <br>
+    Aku bersyukur banget bisa ada di sampingmu...<br>
+    sekarang, peluk dulu dari jauh 🤍<br>
+    <strong>I love you, always sayanggku.</strong><br><br>
+    Kuenyaa nanti nyusul yaa sayanggku 😘😘
+  </p>
+  <img src="debby_collage.jpg" alt="Debby dan Pasangan">
+
+  <!-- Tombol untuk membuka surat -->
+  <button class="secret-btn" onclick="openModal()">📩 Buka Surat Rahasia</button>
+
+  <!-- Modal Surat -->
+  <div id="secretModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Untuk Debby Tersayang 💖</h3>
+      <p>
+        Sayangku...<br><br>
+        Dari semua hal indah di dunia, kamu adalah yang paling bikin aku bersyukur. Di tiap senyum kamu, ada semangat buat aku terus jalanin hari. <br><br>
+        Aku tahu kadang hidup nggak selalu mulus, tapi semoga kamu tahu: aku akan selalu ada di sampingmu—dalam senang, susah, tawa, dan air mata.<br><br>
+        Aku mencintaimu, lebih dalam dari kata, lebih luas dari dunia. Happy birthday, cinta. Terima kasih karena telah jadi kamu 🤍
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">Dibuat dengan cinta 🩵</div>
+
+  <!-- Konfeti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    window.onload = () => {
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+        confetti({
+          particleCount: 5,
+          origin: {
+            x: randomInRange(0.1, 0.9),
+            y: Math.random() - 0.2
+          },
+          ...defaults
+        });
+      }, 250);
+    };
+
+    // Modal functions
+    function openModal() {
+      document.getElementById("secretModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("secretModal").style.display = "none";
+    }
+
+    // Tutup modal kalau klik di luar konten
+    window.onclick = function(event) {
+      const modal = document.getElementById("secretModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
